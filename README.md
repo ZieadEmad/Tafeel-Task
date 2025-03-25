@@ -19,31 +19,7 @@ Shows user details on a separate screen when a user is tapped
 
 The app follows a clean architecture pattern with separation of concerns between layers:
 
-lib/
-├── business_layer/                # State management (Cubit/Bloc logic)
-│
-├── core_layer/                   # Core utilities used across the app
-│   ├── constants/                # App-wide constants
-│   ├── extensions/               # Dart/Flutter extensions
-│   └── helpers/                  # General helper functions
-│
-├── data_layer/                   # Data models and local data handling
-│   ├── data_models/              # User and API response models
-│   └── local/                    # Local storage (e.g., SharedPreferences)
-│
-├── domain_layer/                 # API interaction and endpoints
-│   ├── end_points/               # API route definitions
-│   ├── local_source/             # Local data abstraction (from shared/local)
-│   └── remote_source/            # API calls and remote data access
-│
-├── presentation_layer/           # UI components
-│   ├── screens/                  # Full app screens 
-│   └── widgets/                  # UI components
-│       ├── screens_widgets/      # Widgets specific to a certain screen
-│       └── shared_widgets/       # Reusable UI components
-│
-└── main.dart                     # App entry point
-
+<pre> ```plaintext lib/ ├── business_layer/ # State management (Cubit/Bloc logic) │ ├── core_layer/ # Core utilities used across the app │ ├── constants/ # App-wide constants │ ├── extensions/ # Dart/Flutter extensions │ └── helpers/ # General helper functions ├── data_layer/ # Data models and local data handling │ ├── data_models/ # User and API response models │ └── local/ # Local storage (e.g., SharedPreferences) ├── domain_layer/ # API interaction and endpoints │ ├── end_points/ # API route definitions │ ├── local_source/ # Local data abstraction (from shared/local) │ └── remote_source/ # API calls and remote data access ├── presentation_layer/ # UI components │ ├── screens/ # Full app screens │ └── widgets/ # UI components │ ├── screens_widgets/ # Widgets specific to a certain screen │ └── shared_widgets/ # Reusable UI components └── main.dart # App entry point ``` </pre>
 
 # 🔌 API Endpoints
 
