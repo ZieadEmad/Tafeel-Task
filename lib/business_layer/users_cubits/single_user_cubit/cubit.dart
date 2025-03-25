@@ -20,9 +20,10 @@ class SingleUserCubit extends Cubit<SingleUserStates> {
     DioHelper.getData(
       path: getSingleUserEndPoint(userId),
     ).then((value)async{
-      userDataModel = UsersDataModel.fromJson(value.data);
+      userDataModel = UsersDataModel.fromJson(value.data['data']);
       emit(SingleUserStateSuccess(userDataModel: userDataModel));
     }).catchError((e){
+      print('$baseUrl${getSingleUserEndPoint(userId)}');
       if (e is DioException) {
         if (e.error is SocketException|| e.type == DioExceptionType.receiveTimeout) {
           emit(SingleUserStateNetworkError(e: networkConnectionMessage));

@@ -22,11 +22,14 @@ class UsersCubit extends Cubit<UsersStates> {
 
 //this function to get Users data in home screen from api
   getUsers(){
+    currentPage = 1 ;
+    totalPages = 1 ;
     emit(UsersStateLoading());
     DioHelper.getData(
         path: getUsersEndPoint,
         query: {
           "page":currentPage,
+          "per_page":8,
         }
     ).then((value)async{
       usersMainModel = UsersMainModel.fromJson(value.data);
@@ -50,12 +53,15 @@ class UsersCubit extends Cubit<UsersStates> {
 
 // this function to handle user scrolling to use pagination lazy scrolling screen controller
   listener(ScrollController pagingController) async{
-    if (pagingController.position.atEdge) {
-      bool isInBottom = pagingController.position.pixels != 0;
-      if (isInBottom) {
-        getUsersPaginated();
+    pagingController.addListener((){
+      if (pagingController.position.atEdge) {
+        bool isInBottom = pagingController.position.pixels != 0;
+        if (isInBottom) {
+          getUsersPaginated();
+        }
       }
-    }
+    });
+
   }
 
 
@@ -69,6 +75,7 @@ class UsersCubit extends Cubit<UsersStates> {
           path: getUsersEndPoint,
           query: {
             "page":currentPage,
+            "per_page":8,
           }
       ).then((value)async{
         usersMainModel = UsersMainModel.fromJson(value.data);

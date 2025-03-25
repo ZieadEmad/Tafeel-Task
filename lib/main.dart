@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tafeeltask/domain_layer/remote_source/dio_helper.dart';
 import 'package:tafeeltask/presentation_layer/screens/home_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DioHelper.init();
   runApp(const MyApp());
 }
 

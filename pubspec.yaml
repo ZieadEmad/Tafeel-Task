@@ -39,6 +39,8 @@ dependencies:
   dio: ^5.3.3
   flutter_bloc: ^9.0.0
   conditional_builder_null_safety: ^0.0.6
+  cached_network_image: ^3.3.0
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:
